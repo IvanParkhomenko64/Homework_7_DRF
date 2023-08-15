@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 
 from users.models import Payment, User
+from users.pagination import PaymentPagination
 from users.serializers import (PaymentSerializer, UserRetrieveSerializer,
                                UserSerializer)
 
@@ -24,6 +25,7 @@ class PaymentsListAPIView(generics.ListAPIView):
 
     serializer_class = PaymentSerializer
     queryset = Payment.objects.all()
+    pagination_class = PaymentPagination
 
     filter_backends = (DjangoFilterBackend, OrderingFilter)
 

@@ -1,7 +1,8 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from courses.models import Lesson
+from courses.pagination import LessonPagination
 from courses.serializers.lesson import LessonSerializer, LessonListSerializer
 from users.permissions import *
 
@@ -9,13 +10,16 @@ from users.permissions import *
 class LessonListAPIView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = [IsOwnerOrModerator]
+    permission_classes = [AllowAny]
+    #permission_classes = [IsOwnerOrModerator]
+    pagination_class = LessonPagination
 
 
 class LessonRetrieveAPIView(RetrieveAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = [IsOwnerOrModerator]
+    permission_classes = [AllowAny]
+    #permission_classes = [IsOwnerOrModerator]
 
 
 class LessonCreateAPIView(CreateAPIView):
@@ -33,10 +37,12 @@ class LessonCreateAPIView(CreateAPIView):
 class LessonUpdateAPIView(UpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = [IsOwnerOrModerator]
+    permission_classes = [AllowAny]
+    #permission_classes = [IsOwnerOrModerator]
 
 
 class LessonDestroyAPIView(DestroyAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = [IsOwner]
+    permission_classes = [AllowAny]
+    #permission_classes = [IsOwner]

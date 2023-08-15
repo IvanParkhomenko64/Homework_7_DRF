@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'courses',
+    'subscriptions',
     'django_filters',
     'rest_framework_simplejwt',
 ]
@@ -130,6 +131,7 @@ LOGIN_REDIRECT_URL = '/'
 MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
