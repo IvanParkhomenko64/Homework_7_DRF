@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 import datetime
 
+from django.utils import timezone
+
 NULLABLE = {'blank': True, 'null': True}
 
 
@@ -9,6 +11,8 @@ class Course(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(verbose_name='Описание', **NULLABLE)
     image = models.ImageField(upload_to='courses/', verbose_name='Изображение', **NULLABLE)
+    price = models.FloatField(default=100.00, verbose_name="Цена USD")
+    last_updated = models.DateTimeField(default=timezone.now, verbose_name="последнее обновление")
     owner = models.ForeignKey('users.User', verbose_name='владелец', on_delete=models.CASCADE, **NULLABLE)
 
     def __str__(self):

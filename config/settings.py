@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'subscriptions',
     'django_filters',
     'rest_framework_simplejwt',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
+
+STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')

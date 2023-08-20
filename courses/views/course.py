@@ -1,6 +1,6 @@
 from django.db.models import Count
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from courses.models import Course
 from courses.pagination import CoursePagination
@@ -15,7 +15,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         "list": CourseDetailSerializer,
         "retrieve": CourseDetailSerializer
     }
-    #permission_classes = [IsAuthenticated]
+    #permission_classes = [AllowAny]
     pagination_class = CoursePagination
 
     def get_serializer_class(self):
