@@ -13,9 +13,10 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = (
-            'name', 'description', 'image', 'ref', 'amount_of_lessons',
-        )
+        fields = "__all__"
+        # fields = (
+        #     'name', 'description', 'image', 'ref', 'amount_of_lessons',
+        # )
 
 
 
