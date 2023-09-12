@@ -12,6 +12,3 @@ RUN pip install -r requirements.txt
 
 # Копируйте весь проект внутрь контейнера
 COPY . .
-
-#Запуск в контейнере сервера
-CMD ["python", "manage.py", "runserver"]

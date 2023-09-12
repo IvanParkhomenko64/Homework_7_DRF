@@ -75,12 +75,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'), # Название БД
-        'USER': os.getenv('DB_USER'), # Пользователь для подключения
-        'PASSWORD': os.getenv('DB_PASSWORD'), # Пароль для этого пользователя
-        'HOST': os.getenv('HOST'), # Адрес, на котором развернут сервер БД
-        'PORT': os.getenv('PORT'), # Порт, на котором работает сервер БД
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "postgres",  # Название БД
+        "USER": "postgres",  # Пользователь для подключения
+        "PASSWORD": 'my_password',  # Пароль для этого пользователя
+        "HOST": "db",  # Адрес, на котором развернут сервер БД
+        "PORT": 5432,  # Порт, на котором работает сервер БД
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': os.getenv('DB_NAME'), # Название БД
+        # 'USER': os.getenv('DB_USER'), # Пользователь для подключения
+        # 'PASSWORD': os.getenv('DB_PASSWORD'), # Пароль для этого пользователя
+        # 'HOST': os.getenv('HOST'), # Адрес, на котором развернут сервер БД
+        # 'PORT': os.getenv('PORT'), # Порт, на котором работает сервер БД
     }
 }
 
@@ -147,7 +153,7 @@ STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')
 # Настройки для Celery
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://localhost:6379' # Например, Redis, который по умолчанию работает на порту 6379
+CELERY_BROKER_URL = 'redis://localhost:6379' #Например, Redis, который по умолчанию работает на порту 6379
 
 # URL-адрес брокера результатов, также Redis
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
